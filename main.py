@@ -35,10 +35,10 @@ scaleValue = tk.IntVar()
 def getValue():
     return int(passLengthScale.get())
 def passLengthChanged(event):
-    passLegthValue.configure(text = getValue())
+    passLengthLabel.configure(text = "Password length: {:>2}".format(getValue()))
 passLengthLabel = ttk.Label(
     window,
-    text = "Password length:",
+    text = "Password length: 1",
 )
 passLengthLabel.grid(
     column = 0,
@@ -47,57 +47,63 @@ passLengthLabel.grid(
 passLengthScale = ttk.Scale(
     window,
     from_ = 1,
-    to = 50,
+    to = '50',
+    length = 250,
     orient = 'horizontal',
     command = passLengthChanged,
     variable = scaleValue
 )
 passLengthScale.grid(
-    column = 2,
-    row = 1
-)
-passLegthValue = ttk.Label(
-    window,
-    text = getValue()
-)
-passLegthValue.grid(
     column = 1,
+    columnspan = 2,
     row = 1,
+    padx = 4
 )
 
 #Character selection
-charSelectLabel = ttk.Label(
+charSelectLabel = tk.Label(
     window,
     text = 'Selecet characters:',
 )
 charSelectLabel.grid(
     column = 0,
     row = 3,
-    rowspan = 4
+    rowspan = 2,
+    padx = 4,
+    sticky = 'w',
 )
-includeLowercaseCheck = ttk.Checkbutton(
+includeLower = tk.IntVar()
+includeLowerCheck = ttk.Checkbutton(
     window,
-    text = 'Lowercase(a-z)'
+    text = 'Lowercase(a-z)',
+    variable = includeLower,
+    onvalue = 1
 )
-includeLowercaseCheck.grid(
+includeLowerCheck.grid(
     column = 1,
     row = 3,
     sticky = 'w',
     padx = 4
 )
-includeUppercaseCheck = ttk.Checkbutton(
+includeUpper = tk.IntVar()
+includeUpperCheck = ttk.Checkbutton(
     window,
-    text = 'Uppercase(A-Z)'
+    text = 'Uppercase(A-Z)',
+    variable = includeUpper,
+    onvalue = 1
 )
-includeUppercaseCheck.grid(
+includeUpperCheck.grid(
     column = 2,
     row = 3,
     sticky = 'w',
     padx = 4
 )
+includeNumbers = tk.IntVar()
 includeNumbersCheck = ttk.Checkbutton(
     window,
     text = 'Numbers(0-9)',
+    variable = includeNumbers,
+    onvalue = 1
 )
 includeNumbersCheck.grid(
     column = 1,
@@ -105,15 +111,43 @@ includeNumbersCheck.grid(
     sticky = 'w',
     padx = 4
 )
+includeSpecial = tk.IntVar()
 includeSpecialCheck = ttk.Checkbutton(
     window,
-    text = 'Special(!,@,#,...)'
+    text = 'Special(!,@,#,...)',
+    variable = includeSpecial,
+    onvalue = 1
 )
 includeSpecialCheck.grid(
     column = 2,
     row = 4,
     sticky = 'w',
     padx = 4
+)
+
+#Initial string entry
+initString = tk.StringVar()
+initStringLabel = ttk.Label(
+    window,
+    text = 'Initial text:' 
+)
+initStringLabel.grid(
+    column = 0,
+    row = 5,
+    padx = 4,
+    sticky = 'w'
+)
+initStringEntry = ttk.Entry(
+    window,
+    width = 30,
+    textvariable = initString
+)
+initStringEntry.grid(
+    column = 1,
+    columnspan = 2,
+    row = 5,
+    padx = 4,
+    sticky = 'w'
 )
 
 window.mainloop()
