@@ -43,7 +43,6 @@ passLengthLabel = ttk.Label(
 passLengthLabel.grid(
     column = 0,
     row = 1,
-    ipadx = 2
 )
 passLengthScale = ttk.Scale(
     window,
@@ -64,7 +63,57 @@ passLegthValue = ttk.Label(
 passLegthValue.grid(
     column = 1,
     row = 1,
-    ipadx = 3
+)
+
+#Character selection
+charSelectLabel = ttk.Label(
+    window,
+    text = 'Selecet characters:',
+)
+charSelectLabel.grid(
+    column = 0,
+    row = 3,
+    rowspan = 4
+)
+includeLowercaseCheck = ttk.Checkbutton(
+    window,
+    text = 'Lowercase(a-z)'
+)
+includeLowercaseCheck.grid(
+    column = 1,
+    row = 3,
+    sticky = 'w',
+    padx = 4
+)
+includeUppercaseCheck = ttk.Checkbutton(
+    window,
+    text = 'Uppercase(A-Z)'
+)
+includeUppercaseCheck.grid(
+    column = 2,
+    row = 3,
+    sticky = 'w',
+    padx = 4
+)
+includeNumbersCheck = ttk.Checkbutton(
+    window,
+    text = 'Numbers(0-9)',
+)
+includeNumbersCheck.grid(
+    column = 1,
+    row = 4,
+    sticky = 'w',
+    padx = 4
+)
+includeSpecialCheck = ttk.Checkbutton(
+    window,
+    text = 'Special(!,@,#,...)'
+)
+includeSpecialCheck.grid(
+    column = 2,
+    row = 4,
+    sticky = 'w',
+    padx = 4
 )
 
 window.mainloop()
