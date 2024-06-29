@@ -175,6 +175,9 @@ uppercaseLettersList = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', '
 numbersList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 specialCharactersList = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '', '{', '|', '}', '~']
 def generatePass():
+    if initString.get().count(' ') > 0 or initString.get().count('"') > 0 or initString.get().count('\'') > 0 or initString.get().count('`') > 0:
+        messagebox.showerror("Error", "Initial text can't include spaces, \", ' or ` ")
+        return
     if len(initString.get()) > getPassLength():
         messagebox.showerror("Error", "Initial text is longer than password length.")
         return
