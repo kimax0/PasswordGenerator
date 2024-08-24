@@ -9,7 +9,7 @@ window.title("Secure Password Generator")
 
 #Some static variables
 windowWidth = 420
-windowHeight = 164
+windowHeight = 180
 screenWidth = window.winfo_screenwidth()
 screenHeight = window.winfo_screenheight()
 xCenter = int((screenWidth - windowWidth) / 2)
