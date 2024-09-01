@@ -19,7 +19,7 @@ yCenter = int((screenHeight - windowHeight) / 2)
 window.geometry(f'{windowWidth}x{windowHeight}+{xCenter}+{yCenter}')
 
 #Make window !resizable
-window.resizable(False, False)
+#window.resizable(False, False)
 
 #Intro text
 label = ttk.Label(
