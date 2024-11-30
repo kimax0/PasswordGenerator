@@ -8,7 +8,7 @@ window = tk.Tk()
 window.title("Secure Password Generator")
 
 #Some static variables
-windowWidth = 420
+windowWidth = 490
 windowHeight = 180
 screenWidth = window.winfo_screenwidth()
 screenHeight = window.winfo_screenheight()
