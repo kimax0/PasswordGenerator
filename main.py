@@ -9,7 +9,7 @@ window.title("Secure Password Generator")
 
 #Some static variables
 windowWidth = 490
-windowHeight = 180
+windowHeight = 210
 screenWidth = window.winfo_screenwidth()
 screenHeight = window.winfo_screenheight()
 xCenter = int((screenWidth - windowWidth) / 2)
@@ -30,8 +30,7 @@ label = ttk.Label(
 label.grid(
     column = 0,
     columnspan = 4,
-    row = 0,
-
+    row = 0
 )
 
 #Password length slider
@@ -42,11 +41,11 @@ def passLengthChanged(event):
     passLengthLabel.configure(text = "Password length: {:>2}".format(getPassLength()))
 passLengthLabel = ttk.Label(
     window,
-    text = "Password length: ",
+    text = "Password length: "
 )
 passLengthLabel.grid(
     column = 0,
-    row = 1,
+    row = 1
 )
 passLengthScale = ttk.Scale(
     window,
@@ -68,14 +67,14 @@ passLengthScale.grid(
 #Character selection
 charSelectLabel = tk.Label(
     window,
-    text = 'Selecet characters:',
+    text = 'Selecet characters:'
 )
 charSelectLabel.grid(
     column = 0,
     row = 3,
     rowspan = 2,
     padx = 4,
-    sticky = 'w',
+    sticky = 'w'
 )
 includeLower = tk.IntVar(value = 1)
 includeLowerCheck = ttk.Checkbutton(
