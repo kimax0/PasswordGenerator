@@ -46,6 +46,7 @@ passLengthLabel = ttk.Label(
 passLengthLabel.grid(
     column = 0,
     row = 1,
+    sticky='w',
 )
 passLengthScale = ttk.Scale(
     window,
@@ -143,7 +144,7 @@ unusualSpecial = tk.BooleanVar(
 )
 unusualSpecialLabel = ttk.Label(
     window,
-    text="Use unusual characters:",
+    text="Use unusual special characters:",
 )
 unusualSpecialLabel.grid(
     column=0,
@@ -205,7 +206,7 @@ initStringEntry.grid(
 passListBox = tk.Listbox(
     window,
     height = 1,
-    width = 51,
+    width = 58,
     justify = 'center',
 )
 passListBox.grid(
