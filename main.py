@@ -25,12 +25,12 @@ window.geometry(f'{windowWidth}x{windowHeight}+{xCenter}+{yCenter}')
 label = ttk.Label(
     window,
     text = "Select your settings",
-    font = 24
+    font = 24,
 )
 label.grid(
     column = 0,
     columnspan = 4,
-    row = 0
+    row = 0,
 )
 
 #Password length slider
@@ -41,11 +41,11 @@ def passLengthChanged(event):
     passLengthLabel.configure(text = "Password length: {:>2}".format(getPassLength()))
 passLengthLabel = ttk.Label(
     window,
-    text = "Password length: "
+    text = "Password length: ",
 )
 passLengthLabel.grid(
     column = 0,
-    row = 1
+    row = 1,
 )
 passLengthScale = ttk.Scale(
     window,
@@ -54,104 +54,151 @@ passLengthScale = ttk.Scale(
     length = 250,
     orient = 'horizontal',
     command = passLengthChanged,
-    variable = scaleValue
+    variable = scaleValue,
 )
 passLengthScale.set(12)
 passLengthScale.grid(
     column = 1,
     columnspan = 2,
     row = 1,
-    padx = 4
+    padx = 4,
 )
 
 #Character selection
 charSelectLabel = tk.Label(
     window,
-    text = 'Selecet characters:'
+    text = 'Selecet characters:',
 )
 charSelectLabel.grid(
     column = 0,
     row = 3,
     rowspan = 2,
     padx = 4,
-    sticky = 'w'
+    sticky = 'w',
 )
-includeLower = tk.IntVar(value = 1)
+includeLower = tk.IntVar(
+    value = 1,
+)
 includeLowerCheck = ttk.Checkbutton(
     window,
     text = 'Lowercase(a-z)',
     variable = includeLower,
-    onvalue = 1
+    onvalue = 1,
 )
 includeLowerCheck.grid(
     column = 1,
     row = 3,
     sticky = 'w',
-    padx = 4
+    padx = 4,
 )
-includeUpper = tk.IntVar(value = 1)
+includeUpper = tk.IntVar(
+    value = 1,
+)
 includeUpperCheck = ttk.Checkbutton(
     window,
     text = 'Uppercase(A-Z)',
     variable = includeUpper,
-    onvalue = 1
+    onvalue = 1,
 )
 includeUpperCheck.grid(
     column = 2,
     row = 3,
     sticky = 'w',
-    padx = 4
+    padx = 4,
 )
-includeNumbers = tk.IntVar(value = 1)
+includeNumbers = tk.IntVar(
+    value = 1,
+)
 includeNumbersCheck = ttk.Checkbutton(
     window,
     text = 'Numbers(0-9)',
     variable = includeNumbers,
-    onvalue = 1
+    onvalue = 1,
 )
 includeNumbersCheck.grid(
     column = 1,
     row = 4,
     sticky = 'w',
-    padx = 4
+    padx = 4,
 )
-includeSpecial = tk.IntVar(value = 1)
+includeSpecial = tk.IntVar(
+    value = 1,
+)
 includeSpecialCheck = ttk.Checkbutton(
     window,
     text = 'Special(!,@,#,...)',
     variable = includeSpecial,
-    onvalue = 1
+    onvalue = 1,
 )
 includeSpecialCheck.grid(
     column = 2,
     row = 4,
     sticky = 'w',
-    padx = 4
+    padx = 4,
+)
+
+#Unusual characters
+unusualSpecial = tk.BooleanVar(
+    value=1,
+)
+unusualSpecialLabel = ttk.Label(
+    window,
+    text="Use unusual characters:",
+)
+unusualSpecialLabel.grid(
+    column=0,
+    row=5,
+    padx=4,
+    sticky='w',
+)
+useUnusualSpecial = ttk.Radiobutton(
+    window,
+    text="Yes",
+    value=1,
+    variable=unusualSpecial,
+)
+useUnusualSpecial.grid(
+    column=1,
+    row=5,
+    padx=4,
+    sticky='w',
+)
+avoidUnusualSpecial = ttk.Radiobutton(
+    window,
+    text="No",
+    value=0,
+    variable=unusualSpecial,
+)
+avoidUnusualSpecial.grid(
+    column=2,
+    row=5,
+    padx=4,
+    sticky='w',
 )
 
 #Initial string entry
 initString = tk.StringVar()
 initStringLabel = ttk.Label(
     window,
-    text = 'Initial text:' 
+    text = 'Initial text:', 
 )
 initStringLabel.grid(
     column = 0,
-    row = 5,
+    row = 6,
     padx = 4,
-    sticky = 'w'
+    sticky = 'w',
 )
 initStringEntry = ttk.Entry(
     window,
     width = 30,
-    textvariable = initString
+    textvariable = initString,
 )
 initStringEntry.grid(
     column = 1,
     columnspan = 2,
-    row = 5,
+    row = 6,
     padx = 4,
-    sticky = 'w'
+    sticky = 'w',
 )
 
 #Password listbox
@@ -159,20 +206,22 @@ passListBox = tk.Listbox(
     window,
     height = 1,
     width = 51,
-    justify = 'center'
+    justify = 'center',
 )
 passListBox.grid(
     column = 0,
     columnspan = 5,
-    row = 7,
-    padx = 4
+    row = 8,
+    padx = 4,
 )
 
 #Generate passwords button
 lowercaseLettersList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 uppercaseLettersList = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 numbersList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-specialCharactersList = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '', '{', '|', '}', '~']
+usualSpecialCharactersList = ['!', '#', '$', '%', '&', '?', '@']
+unusualSpecialCharactersList = ['(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '[', '\\', ']', '^', '_', '{', '|', '}', '~']
+
 def generatePass():
     if initString.get().count(' ') > 0 or initString.get().count('"') > 0 or initString.get().count('\'') > 0 or initString.get().count('`') > 0:
         messagebox.showerror("Error", "Initial text can't include spaces, \", ' or ` ")
@@ -188,7 +237,9 @@ def generatePass():
     if includeNumbers.get() == 1:
         finalCharactersList.extend(numbersList)
     if includeSpecial.get() == 1:
-        finalCharactersList.extend(specialCharactersList)
+        finalCharactersList.extend(usualSpecialCharactersList)
+        if unusualSpecial.get() == 1:
+            finalCharactersList.extend(unusualSpecialCharactersList)
     if len(finalCharactersList) == 0:
         messagebox.showerror("Error", "You have to select atleast one group of characters.")
         return
@@ -202,14 +253,14 @@ def generatePass():
 generatePassButton = ttk.Button(
     window,
     text = 'Generate password',
-    command = generatePass
+    command = generatePass,
 )
 generatePassButton.grid(
     column = 0,
     columnspan = 5,
-    row = 6,
+    row = 7,
     ipadx = 100,
-    pady = 4
+    pady = 4,
 )
 
 window.mainloop()
